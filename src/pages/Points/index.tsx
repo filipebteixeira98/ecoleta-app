@@ -26,8 +26,8 @@ const Points = () => {
         <Text style={styles.title}>Welcome.</Text>
         <Text style={styles.description}>Find a collection point on map.</Text>
         <View style={styles.mapContainer}>
-          <MapView style={styles.map} initialRegion={{ latitude: -12.9913412, longitude: -12.9913412, latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
-            <Marker style={styles.mapMarker} onPress={handleNavigateToDetail} coordinate={{ latitude: -12.9913412, longitude: -12.9913412 }}>
+          <MapView style={styles.map} initialRegion={{ latitude: -12.9913412, longitude: -38.5165131, latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
+            <Marker style={styles.mapMarker} onPress={handleNavigateToDetail} coordinate={{ latitude: -12.9913412, longitude: -38.5165131 }}>
               <View style={styles.mapMarkerContainer}>
                 <Image style={styles.mapMarkerImage} source={{ uri: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60' }} />
                 <Text style={styles.mapMarkerTitle}>Market</Text>
