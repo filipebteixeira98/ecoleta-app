@@ -14,14 +14,18 @@ export default function App() {
     Roboto_500Medium,
     Ubuntu_700Bold,
   });
-  
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
 
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <Routes />
     </>
   );
