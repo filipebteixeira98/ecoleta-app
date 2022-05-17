@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,15 +8,50 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
+import api from '../../services/api';
+
+interface Params {
+  point_id: number;
+}
+
+interface Data {
+  point: {
+    name: string;
+    email: string;
+    whatsapp: string;
+    image: string;
+    city: string;
+    uf: string;
+  };
+  items: {
+    title: string;
+  }[];
+}
+
 const Detail = () => {
+  const [data, setData] = useState<Data>({} as Data);
+
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const routeParams = route.params as Params;
+
+  useEffect(() => {
+    api.get(`points/${routeParams.point_id}`).then((response) => {
+      setData(response.data);
+    });
+  }, []);
 
   function handleNavigateBack() {
     navigation.goBack();
+  }
+
+  if (!data.point) {
+    return null;
   }
 
   return (
@@ -28,14 +63,18 @@ const Detail = () => {
         <Image
           style={styles.pointImage}
           source={{
-            uri: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60',
+            uri: data.point.image,
           }}
         />
-        <Text style={styles.pointName}>John's Market</Text>
-        <Text style={styles.pointItems}>Lamps, Kitchen oil</Text>
+        <Text style={styles.pointName}>{data.point.name}</Text>
+        <Text style={styles.pointItems}>
+          {data.items.map((item) => item.title).join(', ')}
+        </Text>
         <View style={styles.address}>
           <Text style={styles.addressTitle}>Address</Text>
-          <Text style={styles.addressContent}>Salvador, BA</Text>
+          <Text style={styles.addressContent}>
+            {data.point.city}, {data.point.uf}
+          </Text>
         </View>
       </View>
       <View style={styles.footer}>
