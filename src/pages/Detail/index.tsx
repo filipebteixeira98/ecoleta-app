@@ -11,6 +11,7 @@ import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import Constants from 'expo-constants';
+import * as MailComposer from 'expo-mail-composer';
 
 import api from '../../services/api';
 
@@ -50,6 +51,13 @@ const Detail = () => {
     navigation.goBack();
   }
 
+  function handleComposeMail() {
+    MailComposer.composeAsync({
+      subject: 'Interested about waste collection',
+      recipients: [data.point.email],
+    });
+  }
+
   if (!data.point) {
     return null;
   }
@@ -82,7 +90,7 @@ const Detail = () => {
           <FontAwesome name="whatsapp" size={20} color="#fff" />
           <Text style={styles.buttonText}>Whatsapp</Text>
         </RectButton>
-        <RectButton style={styles.button} onPress={() => {}}>
+        <RectButton style={styles.button} onPress={handleComposeMail}>
           <Icon name="mail" size={20} color="#fff" />
           <Text style={styles.buttonText}>E-mail</Text>
         </RectButton>
