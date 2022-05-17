@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, ScrollView, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  View,
+  ScrollView,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import { Feather as Icon } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { useNavigation } from '@react-navigation/native';
@@ -8,11 +15,11 @@ import { SvgUri } from 'react-native-svg';
 
 const Points = () => {
   const navigation = useNavigation();
-  
+
   function handleNavigateBack() {
     navigation.goBack();
   }
-  
+
   function handleNavigateToDetail() {
     navigation.navigate('Detail');
   }
@@ -26,10 +33,27 @@ const Points = () => {
         <Text style={styles.title}>Welcome.</Text>
         <Text style={styles.description}>Find a collection point on map.</Text>
         <View style={styles.mapContainer}>
-          <MapView style={styles.map} initialRegion={{ latitude: -12.9913412, longitude: -38.5165131, latitudeDelta: 0.014, longitudeDelta: 0.014 }}>
-            <Marker style={styles.mapMarker} onPress={handleNavigateToDetail} coordinate={{ latitude: -12.9913412, longitude: -38.5165131 }}>
+          <MapView
+            style={styles.map}
+            initialRegion={{
+              latitude: -12.9913412,
+              longitude: -38.5165131,
+              latitudeDelta: 0.014,
+              longitudeDelta: 0.014,
+            }}
+          >
+            <Marker
+              style={styles.mapMarker}
+              onPress={handleNavigateToDetail}
+              coordinate={{ latitude: -12.9913412, longitude: -38.5165131 }}
+            >
               <View style={styles.mapMarkerContainer}>
-                <Image style={styles.mapMarkerImage} source={{ uri: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60' }} />
+                <Image
+                  style={styles.mapMarkerImage}
+                  source={{
+                    uri: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=60',
+                  }}
+                />
                 <Text style={styles.mapMarkerTitle}>Market</Text>
               </View>
             </Marker>
@@ -37,29 +61,57 @@ const Points = () => {
         </View>
       </View>
       <View style={styles.itemsContainer}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20 }}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+        >
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={() => {}}>
-            <SvgUri width={42} height={42} uri="http://192.168.1.9:3333/uploads/lampadas.svg" />
+            <SvgUri
+              width={42}
+              height={42}
+              uri="http://192.168.1.11:3333/uploads/lampadas.svg"
+            />
             <Text style={styles.itemTitle}>Lamps</Text>
           </TouchableOpacity>
         </ScrollView>
@@ -103,7 +155,7 @@ const styles = StyleSheet.create({
 
   mapMarker: {
     width: 90,
-    height: 80, 
+    height: 80,
   },
 
   mapMarkerContainer: {
@@ -113,7 +165,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     borderRadius: 8,
     overflow: 'hidden',
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   mapMarkerImage: {
